@@ -1,5 +1,6 @@
+#PRIOR TO RUNNING, TYPE FOLLOWNING INTO TERMINAL: sudo pip3 install Adafruit_DHT
 import Adafruit_DHT
- 
+
 # Set sensor type : Options are DHT11,DHT22 or AM2302
 sensor=Adafruit_DHT.DHT11
  
