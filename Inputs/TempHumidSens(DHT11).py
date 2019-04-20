@@ -3,8 +3,6 @@
 #   sudo pip3 install Adafruit_DHT
 #   cd Adafruit_Python_DHT
 #   sudo apt-get update
-#   sudo apt-get install build-essential python-dev python-openssl
-#   sudo python setup.py install
 
 import Adafruit_DHT
 
