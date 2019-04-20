@@ -24,3 +24,4 @@ if humidity is not None and temperature is not None:
   print('Temp={0:0.1f}*F  Humidity={1:0.1f}%'.format(temperatureF, humidity))
 else:
   print('Failed to get reading. Try again!')
+
