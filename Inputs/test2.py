@@ -1,20 +1,34 @@
-#!/usr/bin/python
 import RPi.GPIO as GPIO
 import time
 
-#GPIO SETUP
-channel = 26
+GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(channel, GPIO.IN)
+GPIO.setwarnings(False)
 
-def callback(channel):
-        if GPIO.input(channel):
-                print "Vibration Detect!"
-        else:
-                print "Vibration Detect!"
+ECHO = 23
+TRIG = 25
 
-GPIO.add_event_detect(channel, GPIO.BOTH, bouncetime=300)  
-GPIO.add_event_callback(channel, callback)  
-# infinite loop
+
+GPIO.setup(TRIG,GPIO.OUT)
+GPIO.setup(ECHO,GPIO.IN)
+
 while True:
-        time.sleep(1)
+    GPIO.output(TRIG,GPIO.HIGH)
+    time.sleep(0.00001)
+    GPIO.output(TRIG,GPIO.LOW)
+
+    while(GPIO.input(ECHO)) == False:
+        pass
+    start = time.time()
+
+    while(GPIO.input(ECHO)) == True:
+        pass
+    stop = time.time()
+
+    sig_time = stop-start
+
+    distance = sig_time*17000
+
+    print "Distance: %.2f cm"%distance #print the answer
+    time.sleep(0.05)
+    
