@@ -1,38 +1,23 @@
-#Wiring diagram and tutorial can be found at: https://tutorials-raspberrypi.com/measuring-soil-moisture-with-raspberry-pi/
-
-#In order to be able to address the MCP3008, SPI must be activated. TYPE THE FOLLOWING INTO TERMINAL:
-#   sudo raspi-config
-#   Select “8 Advanced Options” -> “A6 SPI” -> “Yes”.
-
-#PRIOR TO RUNNING, TYPE FOLLOWNING INTO TERMINAL:
-#   sudo apt-get install git python-dev
-#   git clone https://github.com/doceme/py-spidev.git
-#   cd py-spidev
-#   sudo python setup.py install
+#Wiring diagram and tutorial can be found at: https://www.piddlerintheroot.com/soil-moisture-sensor/
 
 #!/usr/bin/python
- 
-import spidev
-import os
+import RPi.GPIO as GPIO
 import time
  
-delay = 0.2
+#GPIO SETUP
+channel = 21
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(channel, GPIO.IN)
  
-spi = spidev.SpiDev()
-spi.open(0,0)
+def callback(channel):
+        if GPIO.input(channel):
+                print "Water Detected!"
+        else:
+                print "Water Detected!"
  
-def readChannel(channel):
-  val = spi.xfer2([1,(8+channel)<<4,0])
-  data = ((val[1]&3) << 8) + val[2]
-  return data
+GPIO.add_event_detect(channel, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
+GPIO.add_event_callback(channel, callback)  # assign function to GPIO PIN, Run function on change
  
-if __name__ == "__main__":
-  try:
-    while True:
-      val = readChannel(0)
-      if (val != 0):
-        print(val)
-      time.sleep(delay)
-      
-  except KeyboardInterrupt:
-    print "Cancel."
+# infinite loop
+while True:
+        time.sleep(1)
