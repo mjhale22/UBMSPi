@@ -1,5 +1,6 @@
 from gpiozero import LightSensor
 
+#Set variable of sensor to pin 18
 sensor = LightSensor(18)
 
 while True:
