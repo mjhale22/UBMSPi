@@ -1,21 +1,23 @@
-# Import Raspberry Pi GPIO info as GPIO and Import time functionality
+#Tutorial and wiring diagram can be found at: https://www.piddlerintheroot.com/vibration-sensor/
+
+#!/usr/bin/python
 import RPi.GPIO as GPIO
 import time
 
-# Set variable of gpio as pin 21
-gpio = 21
+#GPIO SETUP
+channel = 17
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(gpio, GPIO.IN)
+GPIO.setup(channel, GPIO.IN)
 
-def callback(gpio):
-        if GPIO.input(gpio):
-                print ("Vibration Detect!")
+def callback(channel):
+        if GPIO.input(channel):
+                print "Movement Detected!"
         else:
-                print ("Vibration Detect!")
+                print "Movement Detected!"
 
-GPIO.add_event_detect(gpio, GPIO.BOTH, bouncetime=300)  
-GPIO.add_event_callback(gpio, callback)  
+GPIO.add_event_detect(channel, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
+GPIO.add_event_callback(channel, callback)  # assign function to GPIO PIN, Run function on change
 
-# Creates an infinite loop
+# infinite loop
 while True:
         time.sleep(1)
