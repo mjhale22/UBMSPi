@@ -1,3 +1,5 @@
+#Wiring diagram and tutorial can be found at: https://www.piddlerintheroot.com/dht11/
+
 #PRIOR TO RUNNING, TYPE FOLLOWNING INTO TERMINAL:
 #   git clone https://github.com/adafruit/Adafruit_Python_DHT.git
 #   sudo pip3 install Adafruit_DHT
@@ -10,8 +12,8 @@ import Adafruit_DHT
 # Set variable of sensor to (sensor being used) DHT11 : Options are DHT11, DHT22 or AM2302
 sensor=Adafruit_DHT.DHT11
  
-# Set variable of gpio as pin 21
-gpio=21
+# Set variable of gpio as pin 14
+gpio=14
 
 #Identify variables being pulled from Adafruit_DHT library (import Adafruit_DHT)
 humidity, temperature = Adafruit_DHT.read(sensor, gpio)
