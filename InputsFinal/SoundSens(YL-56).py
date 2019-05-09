@@ -1,3 +1,5 @@
+# Wiring diagram and tutorial can be found at: https://www.instructables.com/id/Sound-Sensor-Raspberry-Pi/
+
 #!/usr/bin/python
 import RPi.GPIO as GPIO
 import time
