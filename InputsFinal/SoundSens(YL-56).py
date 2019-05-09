@@ -1,4 +1,4 @@
-# Wiring diagram and tutorial can be found at: https://www.instructables.com/id/Sound-Sensor-Raspberry-Pi/
+# Wiring diagram and tutorial can be found at: https://www.piddlerintheroot.com/sound-sensor/
 
 #!/usr/bin/python
 import RPi.GPIO as GPIO
