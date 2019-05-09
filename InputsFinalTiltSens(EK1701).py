@@ -1,3 +1,5 @@
+#Wiring diagram and tutorial can be found at: https://www.instructables.com/id/Tilt-Sensor-Raspberry-Pi/
+
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
 
