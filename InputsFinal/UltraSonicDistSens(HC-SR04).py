@@ -33,11 +33,11 @@ def ping():
 	 
 	distance = round(distance, 2)
 	 
-	print "Distance:",distance,"cm"
+	print ("Distance:",distance,"cm")
 	 
 	GPIO.cleanup()
 
-print "Reading Distance \n"
+print ("Reading Distance \n")
 
 while True:
 	ping()
